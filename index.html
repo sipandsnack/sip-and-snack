@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sip & Snack – Drink and Snack in One</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ALL CSS IN ONE FILE -->
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      color: #222;
+      background: #f7f7fb;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 8vw;
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      color: #2b5cff;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: #2b5cff;
+    }
+
+    .btn-primary {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: #2b5cff;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 18px rgba(43, 92, 255, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(43, 92, 255, 0.4);
+      background: #2349d1;
+    }
+
+    .btn-outline {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid #2b5cff;
+      background: transparent;
+      color: #2b5cff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-outline:hover {
+      background: #2b5cff;
+      color: #fff;
+    }
+
+    main {
+      padding: 2rem 8vw 4rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+      padding: 3rem 0 4rem;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 span {
+      color: #2b5cff;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: #777;
+      margin-top: 0.6rem;
+    }
+
+    .hero-media {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-card {
+      width: 260px;
+      height: 420px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, #ffffff, #e7ebff);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: #2b5cff;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #ffb02e;
+      color: #222;
+      font-size: 0.7rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .bottle {
+      width: 120px;
+      height: 260px;
+      border-radius: 60px;
+      background: linear-gradient(180deg, #2b5cff, #6ecbff);
+      margin-top: 2.2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.7rem;
+    }
+
+    .bottle-top {
+      height: 40px;
+      border-radius: 999px;
+      background: #f7f7fb;
+      margin: 0 auto;
+      width: 60%;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+
+    .bottle-middle {
+      flex: 1;
+      border-radius: 40px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.4rem;
+    }
+
+    .drink-section {
+      height: 55%;
+      border-radius: 30px;
+      background: linear-gradient(180deg, #ff6b6b, #ff9f43);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snack-section {
+      height: 35%;
+      border-radius: 26px;
+      background: #ffeaa7;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snack-section::before {
+      content: "SNACKS";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: #b07b00;
+      font-weight: 700;
+    }
+
+    .drink-section::before {
+      content: "DRINK";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .product-info {
+      margin-top: 1.4rem;
+      text-align: center;
+    }
+
+    .product-info h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-info p {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-price {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #2b5cff;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.4rem;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-title {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-text {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .colors {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .color-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .color-blue { background: #2b5cff; }
+    .color-pink { background: #ff6b9c; }
+    .color-mint { background: #2ecc71; }
+    .color-black { background: #2d3436; }
+
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, #2b5cff, #6ecbff);
+      color: #fff;
+      border-radius: 24px;
+      padding: 2.4rem 1.6rem;
+      margin-top: 2rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .cta-section h2 {
+      margin-bottom: 0.6rem;
+    }
+
+    .cta-section p {
+      margin-bottom: 1.4rem;
+      font-size: 0.95rem;
+      max-width: 30rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .email-input-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .email-input-wrap input {
+      padding: 0.7rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      min-width: 220px;
+      max-width: 280px;
+      outline: none;
+    }
+
+    .cta-note {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    footer {
+      padding: 1.8rem 8vw 1.2rem;
+      font-size: 0.8rem;
+      color: #777;
+      text-align: center;
+    }
+
+    .message {
+      margin-top
